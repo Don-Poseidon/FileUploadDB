@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Upload status</title>
+</head>
+<body>
+	<div>
+		<p><a href="/">Upload OneMore File</a></p>
+	</div>
+	<div th:if="${not #lists.isEmpty(DBContents)}">
+		<div th:if="${Original_Size<=1000}">
+			<h2> DataBase Contents in JSON format</h2>
+			<div th:each="JsonString : ${JsonList}">
+				<p style="white-space: pre;" th:text="${JsonString}"></p>
+			</div>
+		</div>
+		<div th:if="${Original_Size>1000}">
+			<h2> DataBase Contents in JSON format (first 1000 rows are shown)</h2>
+			<div th:each="JsonString : ${JsonList}">
+				<p style="white-space: pre;" th:text="${JsonString}"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
